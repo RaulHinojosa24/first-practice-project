@@ -1,12 +1,9 @@
-import React from "react";
-import Card from "./UI/Card";
+import UserForm from "./components/UserForm";
 
 function App() {
   return (
     <div>
-      <Card>
-        <h1>Text</h1>
-      </Card>
+      <UserForm></UserForm>
     </div>
   );
 }
