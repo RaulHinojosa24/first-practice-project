@@ -15,6 +15,7 @@
 .error-modal__card {
   width: 100%;
   max-width: 700px;
+  z-index: 15;
 }
 
 .error-modal__card-title {
