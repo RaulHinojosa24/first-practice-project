@@ -3,20 +3,17 @@ import UserForm from "./components/UserForm";
 import UserList from "./components/UserList";
 
 function App() {
-  const [users, setUsers] = useState([
-    {
-      name: "Max",
-      age: 31,
-    },
-    {
-      name: "Max",
-      age: 31,
-    },
-  ]);
+  const [users, setUsers] = useState([]);
+
+  const newUserHandler = (user) => {
+    setUsers((prevValue) => {
+      return [user, ...prevValue];
+    });
+  };
 
   return (
     <div>
-      <UserForm></UserForm>
+      <UserForm onNewUser={newUserHandler}></UserForm>
       {users.length > 0 && <UserList users={users}></UserList>}
     </div>
   );
