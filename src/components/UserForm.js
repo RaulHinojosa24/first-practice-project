@@ -23,20 +23,21 @@ const UserForm = (props) => {
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (inputName.trim() === "" && inputAge === "") {
+    if (inputName.trim() === "" && (inputAge === "" || +inputAge <= 0)) {
       setErrorMessage('Please enter valid values for "Username" and "Age"');
       return;
     } else if (inputName.trim() === "") {
       setErrorMessage('Please enter valid "Username"');
       return;
-    } else if (inputAge.trim() === "") {
+    } else if (inputAge === "" || +inputAge <= 0) {
       setErrorMessage('Please enter valid "Age" (> 0)');
       return;
     }
 
     props.onNewUser({
+      id: Math.random().toString(),
       name: inputName.trim(),
-      age: inputAge,
+      age: inputAge.trim(),
     });
 
     setInputName("");
@@ -52,25 +53,21 @@ const UserForm = (props) => {
       )}
 
       <form onSubmit={submitHandler}>
-        <label className={styles["user-form__input-text"]}>
-          Username
-          <input
-            className={styles["user-form__input"]}
-            type="text"
-            value={inputName}
-            onChange={nameChangeHandler}
-          />
-        </label>
-        <label className={styles["user-form__input-text"]}>
-          Age (Years)
-          <input
-            className={styles["user-form__input"]}
-            type="number"
-            value={inputAge}
-            onChange={ageChangeHandler}
-          />
-        </label>
-        <Button>Add User</Button>
+        <label htmlFor="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          value={inputName}
+          onChange={nameChangeHandler}
+        />
+        <label htmlFor="age">Age (Years)</label>
+        <input
+          id="age"
+          type="number"
+          value={inputAge}
+          onChange={ageChangeHandler}
+        />
+        <Button type="submit">Add User</Button>
       </form>
     </Card>
   );

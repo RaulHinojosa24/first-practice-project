@@ -6,13 +6,14 @@
   padding: 15px;
 }
 
-.user-form__input-text {
+.user-form label {
   display: block;
   font-weight: bold;
 }
 
-.user-form__input {
+.user-form input {
   display: block;
   margin: 10px 0;
-  width: 100%;
+  padding: 5px;
+  width: 90%;
 }
